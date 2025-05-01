@@ -76,7 +76,20 @@ function renderUsers(list) {
         `;
     userContainer.appendChild(card);
   });
+  let totalAge = list.reduce((sum, user) => sum + user.dob.age, 0);
+  let averageAge = totalAge / list.length;
+  console.log("Average Age: ", averageAge);
+  list.forEach((user) => {
+    let gender = user.gender;
+    console.log("Gender: ", gender);
+  });
 }
+  /* Just another way I had done it
+  list.forEach( (user, index) => {
+    let gender = `${user.gender}`.toLowerCase();
+    console.log(`Gender: ${index + 1}`, gender);
+  })
+  */
 
 // Task 6: Implement filterUsers() function
 // 6.1 Read and lowercase the value from searchInput
@@ -89,7 +102,6 @@ function filterUsers() {
     let country = `${u.location.country}`.toLowerCase();
     return fullName.includes(term) || country.includes(term);
   });
-  console.log("This is filterUsers being called");
   renderUsers(filtered);
 }
 

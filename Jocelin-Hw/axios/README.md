@@ -27,7 +27,7 @@ This guide will walk you through the features and steps to use the enhanced proj
 
 ---
 
-## Exercise 2: Count by Gender 
+## Exercise 2: Count by Gender //DONE
 
 1. Fetch **5** random users.
 2. Iterate over the results and count how many are `"male"` and how many are `"female"` (look at the `gender` property).
@@ -35,7 +35,7 @@ This guide will walk you through the features and steps to use the enhanced proj
 
 ---
 
-## Exercise 3: Compute Average Age
+## Exercise 3: Compute Average Age  //DONE
 
 1. Fetch **5** random users.
 2. For each user, read their age from `dob.age`.

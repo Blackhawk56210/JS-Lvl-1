@@ -40,7 +40,7 @@ function fetchUsers(count) {
   userContainer.innerHTML = "";
   loader.style.display = "block";
   axios
-    .get(`https://randomuser.me/api/?results=${count}`)
+    .get(`https://randomuser.me/api/?results=5&nat=US=${count}`)
     .then((response) => {
       loader.style.display = "none";
       users = response.data.results;
@@ -86,7 +86,8 @@ function filterUsers() {
   let term = searchInput.value.toLowerCase();
   let filtered = users.filter((u) => {
     let fullName = `${u.name.first} ${u.name.last}`.toLowerCase();
-    return fullName.includes(term);
+    let country = `${u.location.country}`.toLowerCase();
+    return fullName.includes(term) || country.includes(term);
   });
   console.log("This is filterUsers being called");
   renderUsers(filtered);

@@ -4,10 +4,10 @@ This guide will walk you through the features and steps to use the enhanced proj
 
 ## Features
 
-1. **Fetch Single User**: Click 'Fetch 1 Random User' to retrieve one profile.
-2. **Fetch Multiple Users**: Click 'Fetch 5 Random Users' to retrieve a batch.
-3. **Filtering & Searching**: Use the search box to filter displayed users by name.
-4. **More User Details**: Cards show name, age, email, location, and phone number.
+1. **Fetch Single User**: Click 'Fetch 1 Random User' to retrieve one profile. // done
+2. **Fetch Multiple Users**: Click 'Fetch 5 Random Users' to retrieve a batch. //done 
+3. **Filtering & Searching**: Use the search box to filter displayed users by name. //done
+4. **More User Details**: Cards show name, age, email, location, and phone number. //done 
 5. **Theme Toggle**: Switch between light and dark modes with the toggle.
 
 ## Steps to Use
@@ -20,14 +20,14 @@ This guide will walk you through the features and steps to use the enhanced proj
 
 --- Modifications
 
-## Exercise 1: Filter by Nationality
+## Exercise 1: Filter by Nationality //DONE
 
 1. Modify the `fetchUsers` function so it always fetches **5** random users.
 2. After fetching, filter the array to include only users whose `nat` property is `"US"` - Api to use for `"US"` nationality `https://randomuser.me/api/?results=5&nat=US` .
 
 ---
 
-## Exercise 2: Count by Gender
+## Exercise 2: Count by Gender 
 
 1. Fetch **5** random users.
 2. Iterate over the results and count how many are `"male"` and how many are `"female"` (look at the `gender` property).

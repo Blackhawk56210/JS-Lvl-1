@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axios HTTP Request Example</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Random User Generator</h1>
+    <!-- Single and Multiple fetch buttons -->
+    <button id="fetchBtn">Fetch 1 Random User</button>
+    <button id="fetchMultipleBtn">Fetch 5 Random Users</button>
+
+    <!-- Search input to filter by name -->
+    <input type="text" id="searchInput" placeholder="Search by name..." />
+    <!-- Theme toggle switch -->
+    <label class="switch">
+      <input type="checkbox" id="themeToggle" />
+      <span class="slider"></span>
+    </label>
+    <!-- Container for user cards -->
+    <div id="userContainer"></div>
+    <!-- Loader spinner -->
+    <div class="loader" id="loader"></div>
+    <!-- Include Axios via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

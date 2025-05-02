@@ -23,7 +23,7 @@ This guide will walk you through the features and steps to use the enhanced proj
 ## Exercise 1: Filter by Nationality //DONE
 
 1. Modify the `fetchUsers` function so it always fetches **5** random users.
-2. After fetching, filter the array to include only users whose `nat` property is `"US"` - Api to use for `"US"` nationality `https://randomuser.me/api/?results=5&nat=US` .
+2. After fetching, filter the array to include only users whose `nat` property is `"US"` - Api to use for `"US"` nationality `https://randomuser.me/api/?results=nat` .
 
 ---
 

@@ -40,7 +40,7 @@ function fetchUsers(count) {
   userContainer.innerHTML = "";
   loader.style.display = "block";
   axios
-    .get(`https://randomuser.me/api/?results=5&nat=US=${count}`)
+    .get(`https://randomuser.me/api/?results=${count}`)
     .then((response) => {
       loader.style.display = "none";
       users = response.data.results;
@@ -51,6 +51,7 @@ function fetchUsers(count) {
       userContainer.innerHTML = "<p> Error fetching data</p>";
       console.error(error);
     });
+    console.clear();
 }
 
 // Task 5: Implement renderUsers(list) function
@@ -63,6 +64,13 @@ function fetchUsers(count) {
 
 function renderUsers(list) {
   userContainer.innerHTML = "";
+  let totalAge = list.reduce((sum, user) => sum + user.dob.age, 0);
+  let averageAge = totalAge / list.length;
+  console.log("Average Age: ", averageAge);
+  list.forEach((user) => {
+    let gender = user.gender;
+    console.log("Gender: ", gender);
+  })
   list.forEach((user) => {
     let card = document.createElement("div");
     card.className = "user-card";
@@ -75,14 +83,9 @@ function renderUsers(list) {
         <p>Phone-number: ${user.phone}</p>
         `;
     userContainer.appendChild(card);
+    
   });
-  let totalAge = list.reduce((sum, user) => sum + user.dob.age, 0);
-  let averageAge = totalAge / list.length;
-  console.log("Average Age: ", averageAge);
-  list.forEach((user) => {
-    let gender = user.gender;
-    console.log("Gender: ", gender);
-  });
+
 }
   /* Just another way I had done it
   list.forEach( (user, index) => {

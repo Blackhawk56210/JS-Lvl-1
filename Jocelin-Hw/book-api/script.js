@@ -19,8 +19,9 @@ themeToggle.addEventListener("change", toggleTheme);
 
 function fetchBooks(count) {
     loader.style.display = "block";
+    const randomLetter = String.fromCharCode(97 + Math.floor(Math.random() * 26));
     axios
-      .get(`https://openlibrary.org/search.json?q=random&limit=5`)
+      .get(`https://openlibrary.org/search.json?q=${randomLetter}&limit=${count}`)
       .then((response) => {
         loader.style.display = "none";
         const books = response.data.docs.slice(0, count); // get first `count` books

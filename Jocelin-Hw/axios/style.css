@@ -12,22 +12,22 @@ body {
     background: #f0f2f5;
     color: #333;
     transition: background 0.3s, color 0.3s;
-  }
+}
   
-  /* Dark theme override */
-  body.dark {
+/* Dark theme override */
+body.dark {
     background: #121212;
     color: #f0f2f5;
-  }
+}
   
-  /* Heading */
-  h1 {
+/* Heading */
+h1 {
     margin-top: 40px;
     font-size: 2rem;
-  }
+}
   
-  /* Buttons */
-  button {
+/* Buttons */
+button {
     margin: 10px;
     padding: 12px 24px;
     font-size: 1rem;
@@ -37,32 +37,32 @@ body {
     color: white;
     cursor: pointer;
     transition: background 0.2s;
-  }
-  button:hover {
+}
+button:hover {
     background: #0056b3;
-  }
+}
   
-  /* Search input */
-  #searchInput {
+/* Search input */
+#searchInput {
     margin: 10px;
     padding: 8px;
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
+}
   
-  /* Switch (theme toggle) */
-  .switch {
+/* Switch (theme toggle) */
+.switch {
     position: relative;
     display: inline-block;
     width: 50px;
     height: 24px;
     margin: 10px;
-  }
-  .switch input {
+}
+.switch input {
     display: none;
-  }
-  .slider {
+}
+.slider {
     position: absolute;
     cursor: pointer;
     background-color: #ccc;
@@ -72,8 +72,8 @@ body {
     right: 0;
     bottom: 0;
     transition: 0.4s;
-  }
-  .slider:before {
+}
+.slider:before {
     position: absolute;
     content: "";
     height: 18px;
@@ -83,16 +83,16 @@ body {
     background-color: white;
     border-radius: 50%;
     transition: 0.4s;
-  }
-  input:checked + .slider {
+}
+input:checked + .slider {
     background-color: #007bff;
-  }
-  input:checked + .slider:before {
+}
+input:checked + .slider:before {
     transform: translateX(26px);
-  }
+}
   
-  /* User container */
-  #userContainer {
+/* User container */
+#userContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -100,10 +100,10 @@ body {
     width: 100%;
     max-width: 900px;
     padding: 20px;
-  }
+}
   
-  /* User card */
-  .user-card {
+/* User card */
+.user-card {
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -111,26 +111,26 @@ body {
     padding: 20px;
     text-align: center;
     transition: box-shadow 0.2s;
-  }
-  body.dark .user-card {
+}
+body.dark .user-card {
     background: #1e1e1e;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  }
-  .user-card:hover {
+}
+.user-card:hover {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  }
+}
   
-  /* User image */
-  .user-card img {
+/* User image */
+.user-card img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 12px;
-  }
+}
   
-  /* Loader */
-  .loader {
+/* Loader */
+.loader {
     border: 6px solid #f3f3f3;
     border-top: 6px solid #007bff;
     border-radius: 50%;
@@ -139,13 +139,13 @@ body {
     animation: spin 1s linear infinite;
     margin: 20px;
     display: none;
-  }
-  body.dark .loader {
+}
+body.dark .loader {
     border-top: 6px solid #f0f2f5;
-  }
-  @keyframes spin {
+}
+@keyframes spin {
     to {
       transform: rotate(360deg);
     }
-  }
+}
   

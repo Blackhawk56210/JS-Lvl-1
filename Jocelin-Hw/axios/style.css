@@ -9,14 +9,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #f0f2f5;
-    color: #333;
+    background: #eab676;
+    color: #121212;
     transition: background 0.3s, color 0.3s;
 }
   
 /* Dark theme override */
 body.dark {
-    background: #121212;
+    background: rgb(78, 76, 76);
     color: #f0f2f5;
 }
   
@@ -28,6 +28,7 @@ h1 {
   
 /* Buttons */
 button {
+    display: inline-flex;
     margin: 10px;
     padding: 12px 24px;
     font-size: 1rem;
@@ -37,6 +38,7 @@ button {
     color: white;
     cursor: pointer;
     transition: background 0.2s;
+    box-shadow: 4px 4px 6px rgb(58, 57, 57);
 }
 button:hover {
     background: #0056b3;
@@ -53,8 +55,9 @@ button:hover {
   
 /* Switch (theme toggle) */
 .switch {
-    position: relative;
-    display: inline-block;
+    position: absolute;
+    top: 8px;
+    right: 20px;
     width: 50px;
     height: 24px;
     margin: 10px;
@@ -65,7 +68,7 @@ button:hover {
 .slider {
     position: absolute;
     cursor: pointer;
-    background-color: #ccc;
+    background-color: gray;
     border-radius: 24px;
     top: 0;
     left: 0;
@@ -113,7 +116,7 @@ input:checked + .slider:before {
     transition: box-shadow 0.2s;
 }
 body.dark .user-card {
-    background: #1e1e1e;
+    background: steelblue;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 .user-card:hover {

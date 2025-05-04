@@ -8,13 +8,22 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Random User Generator</h1>
+    <h1>User Generator</h1>
     <!-- Single and Multiple fetch buttons -->
-    <button id="fetchBtn">Fetch 1 Random User</button>
-    <button id="fetchMultipleBtn">Fetch 5 Random Users</button>
-
+    <div id="btnContainer">
+     <button id="fetchBtn">Retrieve a Random User</button>
+     <button id="fetchPairBtn">Retrieve a Random Duo</button>
+     <button id="fetchMultipleBtn">Retrieve 5 Random Users</button>
+     <button id="fetchGroupBtn">Retrieve a Random Group</button>
+    </div>
     <!-- Search input to filter by name -->
     <input type="text" id="searchInput" placeholder="Search by name..." />
+    <select name="filter">
+      <option value="none" id="filterSelect">No Filter</option>
+      <option value="name" id="filterSelect">Name</option>
+      <option value="country" id="filterSelect">Country</option>
+      <option value="age" id="filterSelect">Age</option>
+    </select>
     <!-- Theme toggle switch -->
     <label class="switch">
       <input type="checkbox" id="themeToggle" />
@@ -24,14 +33,6 @@
     <div id="userContainer"></div>
     <!-- Loader spinner -->
     <div class="loader" id="loader"></div>
-
-    <!-- Exercise buttons -->
-    <button id="ex1Btn">Exercise 1: Filter US Users</button>
-    <button id="ex2Btn">Exercise 2: Count Gender</button>
-    <button id="ex3Btn">Exercise 3: Average Age</button>
-    <!-- Container to show exercise results -->
-    <pre id="exerciseResult"></pre>
-
     <!-- Include Axios via CDN -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>

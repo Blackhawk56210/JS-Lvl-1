@@ -1,5 +1,7 @@
 const fetchBtn = document.getElementById("fetchBtn");
+const fetchPair = document.getElementById("fetchPairBtn");
 const fetchMultipleBtn = document.getElementById("fetchMultipleBtn");
+const fetchGroupBtn = document.getElementById("fetchGroupBtn");
 const searchInput = document.getElementById("searchInput");
 const userContainer = document.getElementById("userContainer");
 const loader = document.getElementById("loader");
@@ -8,7 +10,9 @@ const themeToggle = document.getElementById("themeToggle");
 let users = [];
 
 fetchBtn.addEventListener("click", () => fetchUsers(1));
+fetchPair.addEventListener("click", () => fetchUsers(2));
 fetchMultipleBtn.addEventListener("click", () => fetchUsers(5));
+fetchGroupBtn.addEventListener("click", () => fetchUsers(10));
 searchInput.addEventListener("input", filterUsers);
 themeToggle.addEventListener("change", toggleTheme);
 
@@ -35,7 +39,9 @@ function renderUsers(list) {
   userContainer.innerHTML = "";
   let totalAge = list.reduce((sum, user) => sum + user.dob.age, 0);
   let averageAge = totalAge / list.length;
-  console.log("Average Age: ", averageAge);
+// 
+  let filterValue = document.getElementById("filterSelect").value;
+  // 
   list.forEach((user) => {
     let gender = user.gender;
     console.log("Gender: ", gender);
@@ -52,11 +58,16 @@ function renderUsers(list) {
         <p>Phone-number: ${user.phone}</p>
         `;
     userContainer.appendChild(card);
-    
   });
-
+  // 
+  if (filterValue === "name") {
+    users = users.filter(users.filter(user => user.status === `${user.name.first}`))
+  }
+  // 
+  console.log("Average Age: ", averageAge);
 }
 
+// filters already rendered users
 function filterUsers() {
   let term = searchInput.value.toLowerCase();
   let filtered = users.filter((u) => {
@@ -66,6 +77,9 @@ function filterUsers() {
   });
   renderUsers(filtered);
 }
+
+
+
 
 function toggleTheme() {
   document.body.classList.toggle("dark", themeToggle.checked);

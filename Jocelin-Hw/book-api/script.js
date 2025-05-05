@@ -39,7 +39,6 @@ submitFilter.addEventListener("click", () => {
     });
 });
 
-
 function fetchBooks(count) {
   loader.style.display = "block";
   const randomLetter = String.fromCharCode(97 + Math.floor(Math.random() * 26));
@@ -63,7 +62,9 @@ function renderList(list) {
     let card = document.createElement("div");
     card.className = "book-card";
     card.innerHTML = `
-      <img src="https://covers.openlibrary.org/b/olid/${book.cover_edition_key || "placeholder"}-M.jpg" alt="book-cover"/>
+      <img src="https://covers.openlibrary.org/b/olid/${
+        book.cover_edition_key || "placeholder"
+      }-M.jpg" alt="book-cover"/>
       <h3>Title: ${book.title || "Unknown Title"}</h3>
       <p>Author: ${(book.author_name || ["Unknown Author"]).join(", ")}</p>
     `;
@@ -90,7 +91,6 @@ function filterBooks() {
 }
 
 function toggleTheme() {
-console.log("toggleTheme:", toggleTheme);
   document.body.classList.toggle("dark", themeToggle.checked);
   console.log("This is toggleTheme being called");
 }

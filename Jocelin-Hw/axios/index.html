@@ -17,13 +17,15 @@
      <button id="fetchGroupBtn">Retrieve a Random Group</button>
     </div>
     <!-- Search input to filter by name -->
-    <input type="text" id="searchInput" placeholder="Search by name..." />
-    <select name="filter">
-      <option value="none" id="filterSelect">No Filter</option>
-      <option value="name" id="filterSelect">Name</option>
-      <option value="country" id="filterSelect">Country</option>
-      <option value="age" id="filterSelect">Age</option>
+    <div id="searchContainer">
+     <input type="text" id="searchInput" placeholder="Search by name..." />
+     <select name="filter" id="filterSelect">
+      <option value="none">No Filter</option>
+      <option value="name">Name</option>
+      <option value="country">Country</option>
     </select>
+     <button id="submitFilter">Submit</button>
+    </div>
     <!-- Theme toggle switch -->
     <label class="switch">
       <input type="checkbox" id="themeToggle" />

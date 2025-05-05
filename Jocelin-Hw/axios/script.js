@@ -3,6 +3,7 @@ const fetchPair = document.getElementById("fetchPairBtn");
 const fetchMultipleBtn = document.getElementById("fetchMultipleBtn");
 const fetchGroupBtn = document.getElementById("fetchGroupBtn");
 const searchInput = document.getElementById("searchInput");
+const submitFilter = document.getElementById("submitFilter");
 const userContainer = document.getElementById("userContainer");
 const loader = document.getElementById("loader");
 const themeToggle = document.getElementById("themeToggle");
@@ -14,6 +15,9 @@ fetchPair.addEventListener("click", () => fetchUsers(2));
 fetchMultipleBtn.addEventListener("click", () => fetchUsers(5));
 fetchGroupBtn.addEventListener("click", () => fetchUsers(10));
 searchInput.addEventListener("input", filterUsers);
+// 
+submitFilter.addEventListener("click", filterUsers);
+// 
 themeToggle.addEventListener("change", toggleTheme);
 
 function fetchUsers(count) {
@@ -39,9 +43,6 @@ function renderUsers(list) {
   userContainer.innerHTML = "";
   let totalAge = list.reduce((sum, user) => sum + user.dob.age, 0);
   let averageAge = totalAge / list.length;
-// 
-  let filterValue = document.getElementById("filterSelect").value;
-  // 
   list.forEach((user) => {
     let gender = user.gender;
     console.log("Gender: ", gender);
@@ -49,7 +50,7 @@ function renderUsers(list) {
   list.forEach((user) => {
     let card = document.createElement("div");
     card.className = "user-card";
-    card.innerHTML = `
+    card.innerHTML =` 
         <img src="${user.picture.medium}" alt="user-picture"/>
         <h3>Name: ${user.name.first} ${user.name.last}</h3>
         <p>Age: ${user.dob.age}</p>
@@ -59,27 +60,29 @@ function renderUsers(list) {
         `;
     userContainer.appendChild(card);
   });
-  // 
-  if (filterValue === "name") {
-    users = users.filter(users.filter(user => user.status === `${user.name.first}`))
-  }
-  // 
   console.log("Average Age: ", averageAge);
 }
 
 // filters already rendered users
 function filterUsers() {
   let term = searchInput.value.toLowerCase();
+  const filterType = document.getElementById("filterSelect").value
   let filtered = users.filter((u) => {
-    let fullName = `${u.name.first} ${u.name.last}`.toLowerCase();
-    let country = `${u.location.country}`.toLowerCase();
+    if (filterType === "name") {
+    let fullName = `${u.name.first} || ${u.name.last}.toLowerCase()`;
+    return fullName.include(term);
+  } else if (filterType === "country") {
+    let country = `${u.location.country}.toLowerCase()`;
+    return country.include(term);
+  } else {
+    let fullName = `${u.name.first} ${u.name.last}.toLowerCase()`;
+    let country = u.location.country.toLowerCase();
     return fullName.includes(term) || country.includes(term);
+  }
   });
+  console.log("filtered Users: ", filtered);
   renderUsers(filtered);
 }
-
-
-
 
 function toggleTheme() {
   document.body.classList.toggle("dark", themeToggle.checked);

@@ -17,21 +17,15 @@ themeToggle.addEventListener("change", toggleTheme);
 submitFilter.addEventListener("click", () => {
   const term = searchInput.value.trim().toLowerCase();
   const filterType = document.getElementById("filterSelect").value;
-
-  if (!term || filterType === "none") {
-    alert("Please select a filter type and enter a search term.");
-    return;
-  }
-
+  if (!term || filterType === "none") return;
   loader.style.display = "block";
+  // Build query based on filter type
   let queryParam = "";
-
-  if (filterType === "title") {
+  if (filterType === "name") {
     queryParam = `title=${encodeURIComponent(term)}`;
   } else if (filterType === "author") {
     queryParam = `author=${encodeURIComponent(term)}`;
   }
-
   axios
     .get(`https://openlibrary.org/search.json?${queryParam}&limit=10`)
     .then((response) => {
@@ -42,7 +36,6 @@ submitFilter.addEventListener("click", () => {
     .catch((error) => {
       loader.style.display = "none";
       console.error("Error fetching filtered books:", error);
-      userContainer.innerHTML = "<p>Error fetching books.</p>";
     });
 });
 
@@ -97,6 +90,7 @@ function filterBooks() {
 }
 
 function toggleTheme() {
+console.log("toggleTheme:", toggleTheme);
   document.body.classList.toggle("dark", themeToggle.checked);
   console.log("This is toggleTheme being called");
 }

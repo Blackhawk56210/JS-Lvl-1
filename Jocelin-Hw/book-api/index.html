@@ -1,23 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Book Roulette</title>
-</head>
-<body>
-    <h1>Book Search</h1>
-    <button id="fetchBtn">Mystery Book</button>
-    <button id="fetchMultipleBtn">Mystery Bundle ~ 5</button>
-    <input type="text" id="searchInput" placeholder="Search by name..." />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axios HTTP Request Example</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>User Generator</h1>
+    <!-- Single and Multiple fetch buttons -->
+    <div id="btnContainer">
+     <button id="fetchBtn">Retrieve a Random Book</button>
+     <button id="fetchMultipleBtn">Retrieve a Book Bundle</button>
+    </div>
+    <!-- Search input to filter by name -->
+    <div id="searchContainer">
+     <input type="text" id="searchInput" placeholder="Search by name..." />
+     <select name="filter" id="filterSelect">
+      <option value="none">No Filter</option>
+      <option value="name">Name</option>
+      <option value="author">Author</option>
+    </select>
+     <button id="submitFilter">Submit</button>
+    </div>
+    <!-- Theme toggle switch -->
     <label class="switch">
-        <input type="checkbox" id="themeToggle" />
-        <span class="slider"></span>
+      <input type="checkbox" id="themeToggle" />
+      <span class="slider"></span>
     </label>
+    <!-- Container for user cards -->
     <div id="booksContainer"></div>
+    <!-- Loader spinner -->
     <div class="loader" id="loader"></div>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="script.js"></script>
+    <!-- Include Axios via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>

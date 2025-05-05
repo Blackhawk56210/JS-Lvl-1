@@ -3,57 +3,96 @@ console.log("I created the perfect system");
 const fetchBtn = document.getElementById("fetchBtn");
 const fetchMultipleBtn = document.getElementById("fetchMultipleBtn");
 const searchInput = document.getElementById("searchInput");
-const booksContainer = document.getElementById("booksContainer");
+const submitFilter = document.getElementById("submitFilter");
+const booksContainer = document.getElementById("booksContainer"); // this is your actual container
 const loader = document.getElementById("loader");
 const themeToggle = document.getElementById("themeToggle");
 
 let books = [];
-let bookImg =  
 
 fetchBtn.addEventListener("click", () => fetchBooks(1));
 fetchMultipleBtn.addEventListener("click", () => fetchBooks(5));
 searchInput.addEventListener("input", filterBooks);
 themeToggle.addEventListener("change", toggleTheme);
+submitFilter.addEventListener("click", () => {
+  const term = searchInput.value.trim().toLowerCase();
+  const filterType = document.getElementById("filterSelect").value;
 
-// fix fetchBook function for random book each press
+  if (!term || filterType === "none") {
+    alert("Please select a filter type and enter a search term.");
+    return;
+  }
+
+  loader.style.display = "block";
+  let queryParam = "";
+
+  if (filterType === "title") {
+    queryParam = `title=${encodeURIComponent(term)}`;
+  } else if (filterType === "author") {
+    queryParam = `author=${encodeURIComponent(term)}`;
+  }
+
+  axios
+    .get(`https://openlibrary.org/search.json?${queryParam}&limit=10`)
+    .then((response) => {
+      loader.style.display = "none";
+      books = response.data.docs;
+      renderList(books);
+    })
+    .catch((error) => {
+      loader.style.display = "none";
+      console.error("Error fetching filtered books:", error);
+      userContainer.innerHTML = "<p>Error fetching books.</p>";
+    });
+});
+
 
 function fetchBooks(count) {
-    loader.style.display = "block";
-    const randomLetter = String.fromCharCode(97 + Math.floor(Math.random() * 26));
-    axios
-      .get(`https://openlibrary.org/search.json?q=${randomLetter}&limit=${count}`)
-      .then((response) => {
-        loader.style.display = "none";
-        const books = response.data.docs.slice(0, count); // get first `count` books
-        renderList(books);
-      })
-      .catch((error) => {
-        console.error("Error fetching books:", error);
-      });
+  loader.style.display = "block";
+  const randomLetter = String.fromCharCode(97 + Math.floor(Math.random() * 26));
+  axios
+    .get(`https://openlibrary.org/search.json?q=${randomLetter}&limit=${count}`)
+    .then((response) => {
+      loader.style.display = "none";
+      books = response.data.docs.slice(0, count); // fix: update global books
+      renderList(books);
+    })
+    .catch((error) => {
+      loader.style.display = "none";
+      console.error("Error fetching books:", error);
+    });
 }
 
 function renderList(list) {
   console.log("renderList is being called");
-  booksContainer.innerHTML = "";
+  booksContainer.innerHTML = ""; // fix: use the correct container
   list.forEach((book) => {
     let card = document.createElement("div");
     card.className = "book-card";
     card.innerHTML = `
-        <img src="https://covers.openlibrary.org/b/olid/${book.cover_edition_key || "placeholder"}-M.jpg" alt="book-cover"/>
-        <h3>Title: ${book.title || "Unknown Title"}</h3>
-        <p>Author: ${book.author_name || "Unknown Author"}</p>
-        `;
+      <img src="https://covers.openlibrary.org/b/olid/${book.cover_edition_key || "placeholder"}-M.jpg" alt="book-cover"/>
+      <h3>Title: ${book.title || "Unknown Title"}</h3>
+      <p>Author: ${(book.author_name || ["Unknown Author"]).join(", ")}</p>
+    `;
     booksContainer.appendChild(card);
   });
 }
 
 function filterBooks() {
-  let term = searchInput.value.toLowerCase();
+  const term = searchInput.value.toLowerCase();
+  const filterType = document.getElementById("filterSelect").value;
+
   let filtered = books.filter((book) => {
-    let authorName = `${book.author_name}`.toLowerCase();
-    return authorName.includes(term);
+    if (filterType === "title") {
+      return (book.title || "").toLowerCase().includes(term);
+    } else if (filterType === "author") {
+      const authorName = (book.author_name || []).join(" ").toLowerCase();
+      return authorName.includes(term);
+    }
+    return true; // if "none" is selected, show all
   });
-  console.log("Filter Being Called");
+
+  console.log("Filter being applied:", filterType, term);
   renderList(filtered);
 }
 

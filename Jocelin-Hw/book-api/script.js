@@ -56,7 +56,6 @@ function fetchBooks(count) {
 }
 
 function renderList(list) {
-  console.log("renderList is being called");
   booksContainer.innerHTML = ""; // fix: use the correct container
   list.forEach((book) => {
     let card = document.createElement("div");
@@ -86,11 +85,9 @@ function filterBooks() {
     return true; // if "none" is selected, show all
   });
 
-  console.log("Filter being applied:", filterType, term);
   renderList(filtered);
 }
 
 function toggleTheme() {
   document.body.classList.toggle("dark", themeToggle.checked);
-  console.log("This is toggleTheme being called");
 }

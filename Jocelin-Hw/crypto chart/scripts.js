@@ -1,84 +1,123 @@
-const mainSection = document.getElementById("mainSection"); // main section selector
+/**
+ * @defintion - creates chart to be put on html in DOM
+ * @param {String} chartId - going to be id of canvas on html
+ * @param {Array} labels - array of timestamps as strings on the x axis
+ * @param {Array} data - array of numbers to plot of line chart
+ * @param {String} label - symbol of coin being passed
+ */
 
-// coinbase axios instance to make api calls look cleaner in the code
-const coinbaseApi = axios.create({
-  baseURL: "https://www.coinbase.com/api/v2/assets/prices",
-  headers: {
-    "Content-Type": "application/json",
-  },
+const api = axios.create( {
+  baseURL: "https://coinbase.com/api/v2/assets/prices"
 });
+const sideCoins = ["tron", "usdc", "chainlink"]; // Ensure "chainlink" is a valid coin name
+const coins = ["bitcoin", "ethereum", "xrp", "doge"];
 
-// change this array to get different charts
-// array to run loop to get prices and display
-const coins = ["ethereum", "doge", "bitcoin", ""];
 
-// function to paint charts onto DOM
-async function makeCharts() {
-  // when function first gets called show loading ( maybe try to find cool loading indicator )
-  mainSection.innerHTML = "<h3>loading...</h3>";
+function createChart(container, chartId, labels, data, label) {
+  const canvas = document.createElement("canvas");
+  canvas.id = chartId;
+  container.appendChild(canvas);
 
-  // where request to coinbase is happening and getting resolved with Promise.all
-  const resolve = await Promise.all(
-    // HOC - high order fu
-    coins.map(async (coin) => (await coinbaseApi.get(`/${coin}`)).data)
-  );
-
-  // after resolved empty mainSection ( getting rid of loading indicatgor )
-  mainSection.innerHTML = "";
-
-  // where putting canvase and charts on DOM
-  resolve.forEach((r) => {
-    console.log(r);
-    // r has too much data we not using so just picking off data that we need atm
-    r = {
-      coin: r.data.base,
-      currentPrice: r.data.prices.latest,
-      prices: r.data.prices.hour.prices.slice(0, 24),
-    };
-
-    // create labels from the timstamps
-    const labels = r.prices.map(([price, timestamp]) => {
-      return new Date(timestamp * 1000).toString().split(" ")[4];
-    });
-
-    // get the prices by timestamp
-    const data = r.prices.map(([price, timestamp]) => {
-      return price;
-    });
-
-    // create canvas
-    const coinChart = document.createElement("canvas");
-    // append coin chart ( canvas to section )
-    mainSection.appendChild(coinChart);
-
-    // chart options
-    new Chart(coinChart, {
-      type: "line",
-      data: {
-        labels: labels,
-        datasets: [
-          {
-            label: `${r.coin} price`,
-            data: data,
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        // scales: {
-        //   y: {
-        //     beginAtZero: true,
-        //   },
-        // },
-      },
-    });
+  new Chart(canvas, {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [{
+        label: `${label}, price`,
+        data,
+        borderColor: "rgb(2, 114, 2)",
+        backgroundColor: "rgba(6, 126, 32, 0.48)",
+        borderWidth: 2,
+        radius: 0,
+        fill: true,
+      }],
+    },
+    options: { responsive: true },
   });
 }
 
-// calling makeCHarts on load
-makeCharts();
+function createSideChart(sideChart, chartId, labels, data, label) {
+  const canvas = document.createElement("canvas");
+  canvas.id = chartId;
+  sideChart.appendChild(canvas);
 
-// setting intercval to run every 10 seconds
-setInterval(() => {
-  makeCharts();
-}, 10000);
+  new Chart(canvas, {
+    type: "bar",
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: `${label}, price`,
+          data: data,
+          borderColor: "rgb(2, 114, 2)",
+          backgroundColor: "rgba(6, 126, 32, 0.48)",
+          borderWidth: 2,
+          radius: 0,
+          fill: true,
+        },
+      ]
+    },
+    options: { responsive: true },
+  });
+}
+
+async function makeCharts() {
+  const chartSection = document.getElementById("chartSection");
+  const sideChart = document.getElementById("sideChart");
+
+  if (!chartSection || !sideChart) {
+    console.error("Missing chartSection or sideChart container in the DOM");
+    return;
+  }
+
+  chartSection.innerHTML = `<div class="loader"></div>`;
+  sideChart.innerHTML = `<div class="loader"></div>`;
+
+  const responses = await Promise.all(
+    coins.map(async (coin) => {
+      const response = await api.get(`/${coin}`);
+      const prices = response.data.data.prices.hour.prices.slice(0, 24);
+      const labels = prices.map(([_, timestamp]) =>
+        new Date(timestamp * 1000).toLocaleTimeString()
+      );
+      const data = prices.map(([price]) => Number(price));
+      return {
+        coinId: coin,
+        labels,
+        data,
+        symbol: response.data.data.base,
+      };
+    })
+  );
+
+  const sideData = await Promise.all(
+    sideCoins.map(async (coin) => {
+      const response = await api.get(`/${coin}`);
+      const prices = response.data.data.prices.hour.prices.slice(0, 24);
+      const labels = prices.map(([_, timestamp]) =>
+        new Date(timestamp * 1000).toLocaleTimeString()
+      );
+      const data = prices.map(([price]) => Number(price));
+      return {
+        coinId: coin,
+        labels,
+        data,
+        symbol: response.data.data.base,
+      };
+    })
+  );
+
+  chartSection.innerHTML = "";
+  sideChart.innerHTML = "";
+
+  responses.forEach((res) => {
+    createChart(chartSection, res.coinId, res.labels, res.data, res.symbol);
+  });
+
+  sideData.forEach((res) => {
+    createSideChart(sideChart, `side-${res.coinId}`, res.labels, res.data, res.symbol);
+  });
+}
+
+makeCharts();
+setInterval(makeCharts, 10000);

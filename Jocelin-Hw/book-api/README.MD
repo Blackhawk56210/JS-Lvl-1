@@ -17,7 +17,9 @@ These projects integrate **DOM manipulation, local storage, navigation, API usag
 ## 📚 Books/ Library API
 # --- need to set no filter to work by searching book and name or set one as default ✅
 # -- customize nav-bar to where sing-in/sign-up sre on right side
-# -- need to about page 
+# -- fix modal to work
+# -- fix theme toggle on media query
+# -- need to add about page 
 # -- add footer for prosperity
 
 ## 📩 Need to add local storage  

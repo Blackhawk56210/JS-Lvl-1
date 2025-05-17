@@ -15,13 +15,17 @@ These projects integrate **DOM manipulation, local storage, navigation, API usag
 
 --Primary Objectives--
 ## 📚 Books/ Library API
-# --- need to set no filter to work by searching book and name or set one as default
+# --- need to set no filter to work by searching book and name or set one as default ✅
+# -- customize nav-bar to where sing-in/sign-up sre on right side
+# -- need to about page 
+# -- add footer for prosperity
 
 ## 📩 Need to add local storage  
-## ---🔲 need to add a button to save books to local Storage
+# ---🔲 need to add a button to save books to local Storage
+# --- save theme setting whe page is refreshed
 
 ## 📄 need modal for sign in
-## --- need to add error message when email and password dont work or are incorrect
+# --- need to add error message when email and password don't work or are incorrect
 
 ---Secondary---
 

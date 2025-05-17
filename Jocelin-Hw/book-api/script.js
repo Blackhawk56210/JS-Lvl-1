@@ -10,6 +10,7 @@ const themeToggle = document.getElementById("themeToggle");
 
 let books = [];
 
+
 fetchBtn.addEventListener("click", () => fetchBooks(1));
 fetchMultipleBtn.addEventListener("click", () => fetchBooks(5));
 searchInput.addEventListener("input", filterBooks);
@@ -71,20 +72,20 @@ function renderList(list) {
   });
 }
 
+
 function filterBooks() {
   const term = searchInput.value.toLowerCase();
   const filterType = document.getElementById("filterSelect").value;
-
-  let filtered = books.filter((book) => {
+  const filtered = books.filter((book) => {
     if (filterType === "title") {
       return (book.title || "").toLowerCase().includes(term);
     } else if (filterType === "author") {
       const authorName = (book.author_name || []).join(" ").toLowerCase();
       return authorName.includes(term);
     }
-    return true; // if "none" is selected, show all
+    return true; // if "none" is selected, show all <-(doesn't work)
   });
-
+  console.log("filter being called", filterBooks);
   renderList(filtered);
 }
 

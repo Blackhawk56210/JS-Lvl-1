@@ -1,12 +1,14 @@
 console.log("I created the perfect system");
 
+const body = document.body;
 const fetchBtn = document.getElementById("fetchBtn");
 const fetchMultipleBtn = document.getElementById("fetchMultipleBtn");
 const searchInput = document.getElementById("searchInput");
 const submitFilter = document.getElementById("submitFilter");
 const booksContainer = document.getElementById("booksContainer"); // this is your actual container
 const loader = document.getElementById("loader");
-const themeToggle = document.getElementById("themeToggle");
+const mobileToggle = document.getElementById("themeToggleMobile");
+const desktopToggle = document.getElementById("themeToggleDesktop");
 
 let books = [];
 
@@ -14,7 +16,6 @@ let books = [];
 fetchBtn.addEventListener("click", () => fetchBooks(1));
 fetchMultipleBtn.addEventListener("click", () => fetchBooks(5));
 searchInput.addEventListener("input", filterBooks);
-themeToggle.addEventListener("change", toggleTheme);
 submitFilter.addEventListener("click", () => {
   const term = searchInput.value.trim().toLowerCase();
   const filterType = document.getElementById("filterSelect").value;
@@ -72,23 +73,38 @@ function renderList(list) {
   });
 }
 
-
 function filterBooks() {
   const term = searchInput.value.toLowerCase();
   const filterType = document.getElementById("filterSelect").value;
   const filtered = books.filter((book) => {
-    if (filterType === "title") {
-      return (book.title || "").toLowerCase().includes(term);
-    } else if (filterType === "author") {
-      const authorName = (book.author_name || []).join(" ").toLowerCase();
-      return authorName.includes(term);
-    }
-    return true; // if "none" is selected, show all <-(doesn't work)
-  });
-  console.log("filter being called", filterBooks);
-  renderList(filtered);
+  if (filterType === "name") {
+    return (book.title || "").toLowerCase().includes(term);
+  } else if (filterType === "author") {
+    const authorName = (book.author_name || []).join(" ").toLowerCase();
+    return authorName.includes(term);
+  }
+  return true;
+ })
+};
+
+// theme switcher
+function setDarkMode(isDark) {
+  document.body.classList.toggle("dark", isDark);
+  mobileToggle.checked = isDark;
+  desktopToggle.checked = isDark;
+  localStorage.setItem("theme", isDark ? "dark" : "light");
 }
 
-function toggleTheme() {
-  document.body.classList.toggle("dark", themeToggle.checked);
+// Sync both toggles
+mobileToggle.addEventListener("change", () => {
+  setDarkMode(mobileToggle.checked);
+});
+desktopToggle.addEventListener("change", () => {
+  setDarkMode(desktopToggle.checked);
+});
+
+// toggle local storage
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "dark") {
+  setDarkMode(true);
 }

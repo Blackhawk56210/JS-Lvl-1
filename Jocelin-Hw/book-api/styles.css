@@ -181,7 +181,16 @@ body.dark .book-card {
     object-fit: cover;
     margin-bottom: 12px;
 }
-  
+
+/* footer */
+.legality {
+    position: absolute;
+    bottom: 0rem;
+    margin: 0;
+    padding: 10px;
+    color: black;
+    background-color: rgb(94, 90, 90)
+}
 /* Loader */
 .loader {
     border: 6px solid #f3f3f3;

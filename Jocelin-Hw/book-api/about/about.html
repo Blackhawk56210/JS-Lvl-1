@@ -3,10 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link src="styles.css" rel="stylesheet"/>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barriecito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
     <title>About Page</title>
 </head>
 <body>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-</body>
-</html>
+    <nav class="navbar navbar-expand-md" id="navbar" style="background-color: #236ec9d5; width: 100%; padding: 1rem 2rem; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+      <div class="container-xxl">
+        <a class="navbar-brand fw-bold fs-3 text-warning" href="#home"><span id="logo">Library</span></a>
+         <!-- Mobile: Toggle + Theme Switch -->
+         <div class="d-flex align-items-center d-md-none">
+           <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#main-nav"
+              aria-controls="main-nav"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <label class="switch ms-2">
+            <input type="checkbox" id="themeToggleMobile" />
+            <span class="slider"></span>
+            </label>
+          </div>
+       <!-- Navbar links + Desktop Theme Switch -->
+       <div class="collapse navbar-collapse justify-content-between" id="main-nav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+        </ul>
+        <div class="btn-group ms-auto">
+              <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#reg-modal">Sign In</button>
+              <button class="btn btn-primary" onclick="window.location.href='sign-up/'">Sign-Up</button>
+        </div>
+          <!-- Desktop Theme Switch -->
+          <label class="switch d-none d-md-block">
+            <input type="checkbox" id="themeToggleDesktop" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </nav>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="reg-modal"
+      tabindex="-1"
+      aria-labelledby="modal-title"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modal-title">Sign In</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <label for="modal-email" class="form-label">Your Email:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="modal-email"
+              placeholder="e.g. LetPhil@email.com"/>
+            <label for="modal-password" class="form-label">Your Password:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="modal-password"
+              placeholder="e.g. console.log(hello World!)"/>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- main page content -->
+     <main>
+      <section class="heading">
+        <header class="hero">
+          <img
+            src="https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png"
+            alt="freecodecamp logo"
+            loading="lazy"
+            class="hero-img"/>
+          <h1 class="hero-title">WELCOME TO OUR LIBRARY</h1>
+            <p class="hero-subtitle">Empowering the community through access, education, and imagination</p>
+
+        </header>
+        <div class="author">
+          <p class="author-name">
+            By Colby Capraun
+          </p>
+        </div>
+      </section>
+      <section class="text">
+        <p class="first-paragraph">
+            Our library is more than just shelves of books — it's a hub for learning, creativity, and connection. Whether you're here to discover a new novel, research a topic, or join a community event, we're here to support your journey.
+        </p>
+        <p>
+            We believe in open access to knowledge for all. That’s why we offer free resources, from books and audiobooks to public computers and workshops. Our staff is always happy to help you find what you need — or introduce you to something new.
+        </p>
+        <p>Over the years, we’ve expanded our services to include online databases, digital lending, and educational programs for all ages. We’re committed to growing with our community and staying ahead of the curve in a changing world.
+        </p>
+        <blockquote>
+        <hr />
+            <p class="quote">
+                A library is not a luxury but one of the necessities of life.
+            </p>
+         <hr />
+        </blockquote>
+        <p>
+            Whether you're a student, a parent, a lifelong learner, or just someone looking for a quiet place to read — this space is yours. Come in, explore, and make yourself at home. We're glad you're here.
+        </p>
+          <hr />
+        </blockquote>
+      </section>
+      <section class="text text-with-images">
+        <article class="brief-history">
+            <h3 class="list-title">A Brief History</h3>
+            <p>Of Our Library</p>
+            <ul class="lists">
+             <li>
+                <h4 class="list-subtitle">Established - 1972</h4>
+                <p>
+                Our library opened its doors with just 1,000 books and a single reading room. From the start, it was built on the belief that knowledge should be available to everyone.
+                </p>
+             </li>
+             <li>
+                 <h4 class="list-subtitle">1990s Expansion</h4>
+                 <p>
+                    We added a children's wing, public computers, and launched our first literacy programs for adults and families.
+                 </p>
+                </li>
+                <li>
+                    <h4 class="list-subtitle">2010 - Digital Leap</h4>
+                    <p>
+                        We began offering eBooks, audiobooks, and access to digital learning tools. Wi-Fi and study spaces became key parts of our service.
+                    </p>
+                </li>
+                <li>
+                    <h4 class="list-subtitle">Today</h4>
+                    <p>
+                        With thousands of visitors each month and a collection that spans formats and generations, our library continues to grow and serve as a cornerstone of the community.
+                    </p>
+                </li>
+            </ul>
+        </article>
+        <aside class="image-wrapper">
+          <img
+            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMCoUvumPVX-tX94ygYxEvqHFGRNW8Dh2zc_me5j5STOF3wvurdJ3DQ7AcU_hTJO7XUbmVPmRYhaiIwUcxZatgUw5qDT1_uZE5f-OVQ2r3HsOYYP4Mv4byfrUei4Scx-LaB9MlbNOdY3k/s1600/Quote-5.png"
+            alt="quote"
+            loading="lazy"
+            class="image-1"
+            width="600"
+            height="400"
+          />
+          <img
+            src="https://images.gr-assets.com/quotes/1392103489p8/7572.jpg"
+            alt="another quote"
+            loading="lazy"
+            class="image-2"
+            width="400"
+            height="600"/>
+          <blockquote class="image-quote">
+            <hr />
+            <p class="quote">
+             "A cozy little haven for book lovers it's quiet, well-organized, and full of hidden gems."
+            </p>
+            <hr />
+          </blockquote>
+        </aside>
+      </section>
+    </main>
+    <footer class="legality">
+      <p>© 2025 BookNest. Yeah, we wrote this part too.
+      Lawyers made us say this: Don’t steal stuff. All rights reserved.
+      By browsing this site, you technically agree to things like Terms of Service, Privacy Policy, and probably the existence of cookies. We don’t track your soul—just page views.
+      No books were harmed in the making of this website.
+      </p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+  </body>

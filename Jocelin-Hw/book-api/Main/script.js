@@ -87,6 +87,10 @@ function filterBooks() {
  })
 };
 
+document.getElementById("signIn").addEventListener("click", () => {
+  window.location.href = "../sign-up/";
+});
+
 // theme switcher
 function setDarkMode(isDark) {
   document.body.classList.toggle("dark", isDark);

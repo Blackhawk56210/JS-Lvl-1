@@ -160,20 +160,20 @@ hr {
 
 /* nav-bar styling */
 #logo {
-    color: black;
-    font-size: 2.5rem;
-    font-family: "Barriecito", system-ui;
-    font-weight: 400;
-    font-style: normal;
+  color: black;
+  font-size: 2.5rem;
+  font-family: "Barriecito", system-ui;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .nav-item {
-    color: black;
-    padding-left: 10%;
-    font-size: 1.75rem;
-    font-family: "Barriecito", system-ui;
-    font-weight: 400;
-    font-style: normal;
+  color: black;
+  padding-left: 10%;
+  font-size: 1.75rem;
+  font-family: "Barriecito", system-ui;
+  font-weight: 400;
+  font-style: normal;
 }
 .nav-link:hover {
     color: yellowgreen;
@@ -181,10 +181,10 @@ hr {
 
 /* Heading */
 h1 {
-    font-size: 2.5rem;
-    font-family: "Barriecito", system-ui;
-    font-weight: 400;
-    font-style: normal;
+  font-size: 2.5rem;
+  font-family: "Barriecito", system-ui;
+  font-weight: 400;
+  font-style: normal;
 }
 
 h2, h3, h4, h5, h6 {
@@ -260,8 +260,8 @@ input:checked + .slider:before {
 /* dark theme styling */
 /* Dark theme override */
 body.dark {
-    background: rgba(82, 78, 78, 0.986);
-    color: #f0f2f5;
+  background: rgba(82, 78, 78, 0.986);
+  color: #f0f2f5;
 }
   
 body.dark .hero-title {

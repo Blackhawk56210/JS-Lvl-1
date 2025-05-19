@@ -21,7 +21,9 @@ These projects integrate **DOM manipulation, local storage, navigation, API usag
 # -- fix theme toggle on media query ✅
 # -- need to add about page ✅
 # -- add footer for prosperity✅
+# -- change header in main page to orangered
 # -- sign-up modal/localStorage
+# -- finish sign up page
 
 ## 📩 Need to add local storage  
 # ---🔲 need to add a button to save books to local Storage

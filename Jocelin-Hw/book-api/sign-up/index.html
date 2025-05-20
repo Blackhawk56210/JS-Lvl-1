@@ -70,18 +70,17 @@
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password-input" placeholder="console.log(password)" required>
         </div>
-        <!-- fix console error for double password -->
         <div class="mb-3">
             <label for="password" class="form-label">Repeat Password</label>
             <input type="password" class="form-control" id="password-repeat" required>
         </div>
-        <!-- add event listener to save local storage -->
+    <!-- add event listener to save local storage -->
         <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Save My Login</label>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-        <button type="button" class="btn btn-primary" data-bs-target="#reg-modal">I Have an account</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reg-modal">I Have an account</button>
     </form>
     <!-- Sign-in modal -->
     <div
@@ -99,13 +98,13 @@
           <div class="modal-body">
             <label for="modal-email" class="form-label">Your Email:</label>
             <input
-              type="text"
+              type="email"
               class="form-control"
               id="modal-email"
               placeholder="e.g. LetPhil@email.com"/>
             <label for="modal-password" class="form-label">Your Password:</label>
             <input
-              type="text"
+              type="password"
               class="form-control"
               id="modal-password"
               placeholder="e.g. console.log(hello World!)"/>
@@ -116,6 +115,13 @@
         </div>
       </div>
     </div>
+    <footer class="legality">
+      <p>© 2025 BookNest. Yeah, we wrote this part too.
+      Lawyers made us say this: Don’t steal stuff. All rights reserved.
+      By browsing this site, you technically agree to things like Terms of Service, Privacy Policy, and probably the existence of cookies. We don’t track your soul—just page views.
+      No books were harmed in the making of this website.
+      </p>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>

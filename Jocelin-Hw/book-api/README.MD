@@ -24,6 +24,8 @@ These projects integrate **DOM manipulation, local storage, navigation, API usag
 # -- change header in main page to orangered ✅
 # -- sign-up modal/localStorage
 # -- finish sign up page
+# -- style list-title/subtitle in styles about
+# -- modal close button
 
 ## 📩 Need to add local storage  
 # ---🔲 need to add a button to save books to local Storage

@@ -17,17 +17,19 @@ fetchBtn.addEventListener("click", () => fetchBooks(1));
 fetchMultipleBtn.addEventListener("click", () => fetchBooks(5));
 searchInput.addEventListener("input", filterBooks);
 submitFilter.addEventListener("click", () => {
+  console.log("submitFilter");
+  filterBooks();
   const term = searchInput.value.trim().toLowerCase();
   const filterType = document.getElementById("filterSelect").value;
   if (!term || filterType === "none") return;
   loader.style.display = "block";
   // Build query based on filter type
-  let queryParam = "";
-  if (filterType === "name") {
+   let queryParam = "";
+   if (filterType === "name") {
     queryParam = `title=${encodeURIComponent(term)}`;
-  } else if (filterType === "author") {
-    queryParam = `author=${encodeURIComponent(term)}`;
-  }
+   } else if (filterType === "author") {
+   queryParam = `author=${encodeURIComponent(term)}`;
+   }
   axios
     .get(`https://openlibrary.org/search.json?${queryParam}&limit=10`)
     .then((response) => {
@@ -58,6 +60,7 @@ function fetchBooks(count) {
 }
 
 function renderList(list) {
+  console.log("renderList")
   booksContainer.innerHTML = ""; // fix: use the correct container
   list.forEach((book) => {
     let card = document.createElement("div");
@@ -74,6 +77,7 @@ function renderList(list) {
 }
 
 function filterBooks() {
+  console.log("filterBooks:");
   const term = searchInput.value.toLowerCase();
   const filterType = document.getElementById("filterSelect").value;
   const filtered = books.filter((book) => {

@@ -209,7 +209,10 @@ button {
 
 button:hover {
     background: #0056b3;
+}
 
+.btn-close:hover {
+  opacity: 30%;
 }
 /* Switch (theme toggle) */
 .switch {

@@ -201,6 +201,7 @@ body.dark .book-card {
     background-color: rgb(94, 90, 90);
     text-align: center;
     z-index: 100;
+    width: 100%;
 }
 /* Loader */
 .loader {

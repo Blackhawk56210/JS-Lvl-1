@@ -22,23 +22,24 @@ These projects integrate **DOM manipulation, local storage, navigation, API usag
 # -- need to add about page ✅
 # -- add footer for prosperity✅
 # -- change header in main page to orangered ✅
-# -- sign-up modal/localStorage
-# -- finish sign up page
-# -- style list-title/subtitle in styles about
-# -- modal close button
+# -- sign-up modal/localStorage ✅
+# -- finish sign up page ✅
+# -- style list-title/subtitle in styles about ✅
+# -- modal close button styling
 
-## 📩 Need to add local storage  
-# ---🔲 need to add a button to save books to local Storage
+
+## 📩 Need to add local storage✅  
+# ---🔲 need to add a button to save books to local Storage ✅
 # --- save theme setting whe page is refreshed ✅
+## 📄 need modal for sign in ✅
 
-## 📄 need modal for sign in
-# --- need to add error message when email and password don't work or are incorrect
 
 ---Secondary---
 
 ### Look at adding bootstrap for either when Books are being called or other features
 ### Try and add Comment sections for each book / may be too big of a challenge
-
+## Error message when email and password don't work or are incorrect
+## autofill maybe?
 ---
 
 ## 📌 backup Project idea List

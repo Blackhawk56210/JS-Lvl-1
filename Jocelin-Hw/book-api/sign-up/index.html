@@ -49,7 +49,7 @@
 
     <!-- Primary Page -->
     <h1>Sign-Up</h1>
-    <form action="https://LetPhil.org" method="post">
+    <form action="https://LetPhil.org" method="post" id="signInForm">
         <div class="mb-3">
             <label for="first-name" class="form-label">Enter Your First Name: </label> 
             <input id="first-name" name="first-name" type="text" class="form-control" placeholder="Phillip" required/>
@@ -63,23 +63,23 @@
         </label>
         <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="eamil-input" aria-describedby="emailHelp" placeholder="Jocelin@discord.com" required>
+            <input type="email" class="form-control" id="email-input" name="email" aria-describedby="emailHelp" placeholder="Jocelin@discord.com" required>
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password-input" placeholder="console.log(password)" required>
+            <label for="password-input" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password-input" name="password" placeholder="console.log(password)" required>
         </div>
         <div class="mb-3">
-            <label for="password" class="form-label">Repeat Password</label>
-            <input type="password" class="form-control" id="password-repeat" required>
+            <label for="password-repeat" class="form-label">Repeat Password</label>
+            <input type="password" class="form-control" id="password-repeat" name="password-repeat" required>
         </div>
     <!-- add event listener to save local storage -->
         <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Save My Login</label>
+            <input type="checkbox" class="form-check-input" id="checkbox">
+            <label class="form-check-label" for="checkbox" id="saveLogin" >Save My Login</label>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary"  id="submitLogin">Submit</button>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reg-modal">I Have an account</button>
     </form>
     <!-- Sign-in modal -->

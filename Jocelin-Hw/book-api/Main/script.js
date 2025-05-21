@@ -12,35 +12,13 @@ const desktopToggle = document.getElementById("themeToggleDesktop");
 
 let books = [];
 
-
 fetchBtn.addEventListener("click", () => fetchBooks(1));
 fetchMultipleBtn.addEventListener("click", () => fetchBooks(5));
 searchInput.addEventListener("input", filterBooks);
 submitFilter.addEventListener("click", () => {
   console.log("submitFilter");
   filterBooks();
-  const term = searchInput.value.trim().toLowerCase();
-  const filterType = document.getElementById("filterSelect").value;
-  if (!term || filterType === "none") return;
-  loader.style.display = "block";
-  // Build query based on filter type
-   let queryParam = "";
-   if (filterType === "name") {
-    queryParam = `title=${encodeURIComponent(term)}`;
-   } else if (filterType === "author") {
-   queryParam = `author=${encodeURIComponent(term)}`;
-   }
-  axios
-    .get(`https://openlibrary.org/search.json?${queryParam}&limit=10`)
-    .then((response) => {
-      loader.style.display = "none";
-      books = response.data.docs;
-      renderList(books);
-    })
-    .catch((error) => {
-      loader.style.display = "none";
-      console.error("Error fetching filtered books:", error);
-    });
+  
 });
 
 function fetchBooks(count) {
@@ -77,19 +55,31 @@ function renderList(list) {
 }
 
 function filterBooks() {
-  console.log("filterBooks:");
-  const term = searchInput.value.toLowerCase();
+  const term = searchInput.value.trim().toLowerCase();
   const filterType = document.getElementById("filterSelect").value;
-  const filtered = books.filter((book) => {
-  if (filterType === "name") {
-    return (book.title || "").toLowerCase().includes(term);
+  // Build query based on filter type
+  let queryParam = "";
+  if (!term || filterType === "none") {
+    loader.style.display = "none";
+    return;
+  } else if (filterType === "name") {
+    queryParam = `title=${encodeURIComponent(term)}`;
   } else if (filterType === "author") {
-    const authorName = (book.author_name || []).join(" ").toLowerCase();
-    return authorName.includes(term);
+    queryParam = `author=${encodeURIComponent(term)}`;
   }
-  return true;
- })
-};
+  loader.style.display = "block";
+  axios
+    .get(`https://openlibrary.org/search.json?${queryParam}&limit=10`)
+    .then((response) => {
+      loader.style.display = "none";
+      books = response.data.docs;
+      renderList(books);
+    })
+    .catch((error) => {
+      loader.style.display = "none";
+      console.error("Error fetching filtered books:", error);
+    });
+}
 
 document.getElementById("signIn").addEventListener("click", () => {
   window.location.href = "../sign-up/";

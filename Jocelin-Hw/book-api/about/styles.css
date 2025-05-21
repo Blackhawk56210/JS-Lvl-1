@@ -144,6 +144,10 @@ hr {
 
 .list-title, .list-subtitle {
   color: black;
+  font-size: 2rem;
+  font-style: italic;
+  padding-bottom: 10px;
+  padding-top: 30px;
 }
 
 .image-wrapper {
@@ -152,6 +156,11 @@ hr {
   grid-template-rows: repeat(3, min-content);
   gap: 2rem;
   place-items: center;
+}
+
+iframe {
+  padding: 0px;
+  margin: 0;
 }
 
 .image-1, .image-3 {
@@ -286,6 +295,7 @@ body.dark .first-paragraph::first-letter {
   color: black;
   background-color: rgb(94, 90, 90);
   text-align: center;
+  width: 100%;
 }
 
 /* Loader */

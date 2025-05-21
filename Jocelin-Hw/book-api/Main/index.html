@@ -68,7 +68,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="modal-title">Sign In</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" = data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <label for="modal-email" class="form-label">Your Email:</label>
@@ -85,7 +85,7 @@
               placeholder="e.g. console.log(hello World!)"/>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Don't have an account</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="window.location.href='../sign-up/'">Don't have an account</button>
             <button type="button" class="btn btn-primary">Sing-in</button>
           </div>
         </div>
@@ -104,7 +104,7 @@
     <div id="searchContainer">
       <input type="text" id="searchInput" placeholder="Search by name..." />
       <select name="filter" id="filterSelect">
-        <option value="none">No Filter</option>
+        <option value="none">--Select Filter--</option>
         <option value="name">Name</option>
         <option value="author">Author</option>
       </select>

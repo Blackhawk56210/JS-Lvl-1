@@ -26,10 +26,12 @@ form.addEventListener("submit", (e) => {
     }
     localStorage.setItem("userData", JSON.stringify(userData));
     localStorage.setItem("signIn", JSON.stringify(signIn));
+    const storedSignIn = JSON.parse(localStorage.getItem("signIn")) || {};
+    const storedUserData = JSON.parse(localStorage.getItem("userData")) || {};
     const allStoredData = {
-  ...storedSignIn,
-  ...storedUserData
-  };
+    ...storedSignIn,
+    ...storedUserData
+};
 
 console.log("All User Info:", allStoredData);
 })

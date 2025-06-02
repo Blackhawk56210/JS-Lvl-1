@@ -1,8 +1,9 @@
-
 const express = require("express");
-console.log("what is express; ", express)
 const app = express();
 const port = 3000;
+
+
+// need to fix node and npm
 
 app.get("/", (req, res) => {
  res.send("Hello, World!");
